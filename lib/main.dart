@@ -1,3 +1,5 @@
+import 'package:covimitr/screen/homeScreen.dart';
+import 'package:covimitr/screen/oxygen_screen.dart';
 import 'package:flutter/material.dart';
 
 import './screen/loginScreen.dart';
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: HomeScreen(),
+      routes: {OxygenScreen.routeName: (context) => OxygenScreen()},
     );
   }
 }

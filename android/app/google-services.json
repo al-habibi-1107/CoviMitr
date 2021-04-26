@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "705438610867",
+    "project_id": "covimitr-5919b",
+    "storage_bucket": "covimitr-5919b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705438610867:android:2c718800cdd71b198707c6",
+        "android_client_info": {
+          "package_name": "com.example.covimitr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705438610867-vckfb7ovm68cf90dfvd21dm3matk309d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD6p3iT_box0GG5TZMHlBR-3lHE940-gU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705438610867-vckfb7ovm68cf90dfvd21dm3matk309d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
