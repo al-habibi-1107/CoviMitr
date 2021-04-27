@@ -14,24 +14,46 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Help Users"),
-        ),
-        // body: Center(
-        //   child: TextButton(
-        //       onPressed: () async {
-        //         await Data().getOxyData();
-        //       },
-        //       child: Text("Get Data")),
-        // ),
-        body: Column(
+      appBar: AppBar(
+        title: Text("Help Users"),
+        elevation: 0,
+      ),
+      // body: Center(
+      //   child: TextButton(
+      //       onPressed: () async {
+      //         await Data().getOxyData();
+      //       },
+      //       child: Text("Get Data")),
+      // ),
+      body: SafeArea(
+        child: Column(
           children: [
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(OxygenScreen.routeName);
-                },
-                child: Text("Oxygen Requirements"))
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: TextButton(
+                  style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(OxygenScreen.routeName);
+                  },
+                  child: Card(
+                      elevation: 2.0,
+                      margin: EdgeInsets.all(18.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "Oxygen Requirements",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ))),
+            )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
