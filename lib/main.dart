@@ -1,5 +1,7 @@
 import 'package:covimitr/screen/homeScreen.dart';
+import 'package:covimitr/screen/medicine_screen.dart';
 import 'package:covimitr/screen/oxygen_screen.dart';
+import 'package:covimitr/screen/plasma_screen.dart';
 import 'package:flutter/material.dart';
 
 import './screen/loginScreen.dart';
@@ -18,7 +20,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: HomeScreen(),
-      routes: {OxygenScreen.routeName: (context) => OxygenScreen()},
+      routes: {
+        OxygenScreen.routeName: (context) => OxygenScreen(),
+        PlasmaScreen.routeName: (context) => PlasmaScreen(),
+        MedicineScreen.routeName: (context) => MedicineScreen()
+      },
     );
   }
 }
