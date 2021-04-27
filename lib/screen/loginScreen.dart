@@ -1,5 +1,8 @@
+import 'package:covimitr/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
+
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({
@@ -27,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               ),
               child: Container(
                 padding: EdgeInsets.only(top: 5),
-                height: deviceSize.height * 0.44,
+                height: 340,
                 width: deviceSize.width * 0.8,
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.2),
