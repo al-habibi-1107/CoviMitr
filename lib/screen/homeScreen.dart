@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covimitr/screen/medicine_screen.dart';
 import 'package:covimitr/screen/oxygen_screen.dart';
 import 'package:covimitr/screen/plasma_screen.dart';
+import 'package:covimitr/screen/testing_screen.dart';
 import 'package:covimitr/services/data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -95,6 +96,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       "Plasma Requirements",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: TextButton(
+                style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(TestingScreen.routeName);
+                },
+                child: Card(
+                  elevation: 2.0,
+                  margin: EdgeInsets.all(18.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      "Testing Requirements",
                       style: TextStyle(
                           color: Colors.blue,
                           fontSize: 16,

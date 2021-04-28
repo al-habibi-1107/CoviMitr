@@ -49,4 +49,19 @@ class Data extends ChangeNotifier {
       print(e.toString());
     }
   }
+
+  Future getTestingData() async {
+    try {
+      var data = await http.get(Uri.https(
+        "script.google.com",
+        "/macros/s/AKfycbxzCe8pkqHK1Gls7ZqJH3UYU7wT8fYcS5Clol2Ls98m25opaVyDJl9vVgkwCXOBqzQpxA/exec",
+      ));
+
+      if (data.statusCode == 200) {
+        return data;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
