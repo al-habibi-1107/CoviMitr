@@ -10,10 +10,41 @@ class Data extends ChangeNotifier {
     try {
       var data = await http.get(Uri.https(
         "script.google.com",
-        "/macros/s/AKfycbxeS_vSxWnVUgbox6N0cIB0bJ4PCC-2WzHBTYpRZ_V037MURKQWxENVvkC4BWy02NZ9nw/exec",
+        "/macros/s/AKfycbxAZlsVWiyrkFL1Zt94JMvmvSjgXZaS_FdeuglHWAWEoZ9Mtcg7yAYzapcNgIaNCMqnOw/exec",
+      ));
+      if (data.statusCode == 200) {
+        return data;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future getPlasmaData() async {
+    try {
+      var data = await http.get(Uri.https(
+        "script.google.com",
+        "/macros/s/AKfycbwgGHnbUTLQGZ85qiUgz-cCXTP9DpNFa7GPSz2weMcCgA3Ab3_gtMFi3OisNMeFl12f/exec",
       ));
 
-      return data;
+      if (data.statusCode == 200) {
+        return data;
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future getMedicineData() async {
+    try {
+      var data = await http.get(Uri.https(
+        "script.google.com",
+        "/macros/s/AKfycbx4V8T9fjr3jMUJD-1NrsmhfFmPoItdqtVU98LRC2AWSZAkl3YKy4TNQ9x6bHwPppEVqA/exec",
+      ));
+
+      if (data.statusCode == 200) {
+        return data;
+      }
     } catch (e) {
       print(e.toString());
     }
