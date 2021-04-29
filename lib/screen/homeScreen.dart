@@ -16,11 +16,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("CoviMitr"),
-        elevation: 0,
-      ),
+      backgroundColor: Colors.black,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   title: Text(
+      //     "CoviMitr",
+      //     style: TextStyle(fontWeight: FontWeight.bold),
+      //   ),
+      //   elevation: 0,
+      // ),
       // body: Center(
       //   child: TextButton(
       //       onPressed: () async {
@@ -32,30 +38,70 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 10,
+              height: deviceSize.height * 0.03,
             ),
-            Text(
-                "DISCLAIMER: All of these resources provided on an “as and when basis” and “as in” based on a fact check done by volunteers who are dedicated to help individuals and families in such challenging times. By using these resources, you are agreeing that COVID FIGHTERS INDIA, however, do not accept any responsibility or liability for the accuracy, content, completeness, legality or reliability of the information contained in any of these."),
+            Row(
+              children: [
+                SizedBox(
+                  width: deviceSize.width * 0.1,
+                ),
+                Text(
+                  "CoviMitr",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 40),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: deviceSize.width * 0.1,
+                  height: 10,
+                ),
+                Text(
+                  "Together We Can..!!",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 17),
+                ),
+              ],
+            ),
             SizedBox(
-              height: 10,
+              height: deviceSize.height * 0.05,
             ),
             Center(
               child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.all(0.0),
+                ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(OxygenScreen.routeName);
                 },
-                child: Card(
-                  elevation: 2.0,
+                child: Container(
+                  height: deviceSize.height * 0.1,
+                  width: deviceSize.width * 0.6,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white70,
+                      width: 0.75,
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white10,
+                  ),
                   margin: EdgeInsets.all(18.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "Oxygen Requirements",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Oxygen Requirements",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
@@ -67,17 +113,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(MedicineScreen.routeName);
                 },
-                child: Card(
-                  elevation: 2.0,
+                child: Container(
+                  height: deviceSize.height * 0.1,
+                  width: deviceSize.width * 0.6,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white70,
+                        width: 0.75,
+                      ),
+                      color: Colors.white10,
+                      borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "Medicine Requirements",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Medicine Requirements",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
@@ -89,17 +145,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(PlasmaScreen.routeName);
                 },
-                child: Card(
-                  elevation: 2.0,
+                child: Container(
+                  height: deviceSize.height * 0.1,
+                  width: deviceSize.width * 0.6,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white70,
+                        width: 0.75,
+                      ),
+                      color: Colors.white10,
+                      borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "Plasma Requirements",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Plasma Requirements",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
@@ -111,17 +177,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(TestingScreen.routeName);
                 },
-                child: Card(
-                  elevation: 2.0,
+                child: Container(
+                  height: deviceSize.height * 0.1,
+                  width: deviceSize.width * 0.6,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white70,
+                        width: 0.75,
+                      ),
+                      color: Colors.white10,
+                      borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "Testing Requirements",
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        "Testing Requirements",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
@@ -130,6 +206,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      bottomSheet: SafeArea(
+        maintainBottomViewPadding: true,
+        child: Container(
+          margin: EdgeInsets.only(bottom: deviceSize.height * 0.03),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: deviceSize.height * 0.01,
+                horizontal: deviceSize.width * 0.04),
+            child: Text(
+              "DISCLAIMER: All of these resources provided on an “as and when basis” and “as in” based on a fact check done by volunteers who are dedicated to help individuals and families in such challenging times. By using these resources, you are agreeing that COVID FIGHTERS INDIA, however, do not accept any responsibility or liability for the accuracy, content, completeness, legality or reliability of the information contained in any of these.",
+              style: TextStyle(color: Colors.redAccent),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
+//Color.fromRGBO(71, 20, 61, 1),
