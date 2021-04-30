@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:covimitr/screen/about.dart';
 import 'package:covimitr/screen/medicine_screen.dart';
 import 'package:covimitr/screen/oxygen_screen.dart';
 import 'package:covimitr/screen/plasma_screen.dart';
 import 'package:covimitr/screen/testing_screen.dart';
-import 'package:covimitr/services/data.dart';
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -19,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromRGBO(71, 20, 61, 1),
       // appBar: AppBar(
       //   backgroundColor: Colors.transparent,
       //   title: Text(
@@ -97,11 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: deviceSize.width * 0.6,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Color.fromRGBO(185, 151, 80, 1),
                       width: 0.75,
                     ),
                     borderRadius: BorderRadius.circular(5),
-                    color: Colors.white10,
+                    color: Color.fromRGBO(185, 151, 80, 0.3),
                   ),
                   margin: EdgeInsets.all(18.0),
                   child: Center(
@@ -130,10 +127,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: deviceSize.width * 0.6,
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.white70,
+                        color: Color.fromRGBO(185, 151, 80, 1),
                         width: 0.75,
                       ),
-                      color: Colors.white10,
+                      color: Color.fromRGBO(185, 151, 80, 0.3),
                       borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
                   child: Center(
@@ -162,10 +159,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: deviceSize.width * 0.6,
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.white70,
+                        color: Color.fromRGBO(185, 151, 80, 1),
                         width: 0.75,
                       ),
-                      color: Colors.white10,
+                      color: Color.fromRGBO(185, 151, 80, 0.3),
                       borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
                   child: Center(
@@ -194,10 +191,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: deviceSize.width * 0.6,
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.white70,
+                        color: Color.fromRGBO(185, 151, 80, 1),
                         width: 0.75,
                       ),
-                      color: Colors.white10,
+                      color: Color.fromRGBO(185, 151, 80, 0.3),
                       borderRadius: BorderRadius.circular(5)),
                   margin: EdgeInsets.all(18.0),
                   child: Center(
@@ -228,7 +225,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 horizontal: deviceSize.width * 0.04),
             child: Text(
               "DISCLAIMER: All of these resources provided on an “as and when basis” and “as in” based on a fact check done by volunteers who are dedicated to help individuals and families in such challenging times. By using these resources, you are agreeing that COVID FIGHTERS INDIA, however, do not accept any responsibility or liability for the accuracy, content, completeness, legality or reliability of the information contained in any of these.",
-              style: TextStyle(color: Colors.redAccent),
+              style: TextStyle(
+                color: Colors.white70,
+              ),
               textAlign: TextAlign.justify,
             ),
           ),

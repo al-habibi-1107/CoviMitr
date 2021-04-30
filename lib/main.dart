@@ -6,8 +6,6 @@ import 'package:covimitr/screen/testing_screen.dart';
 import 'package:covimitr/screen/about.dart';
 import 'package:flutter/material.dart';
 
-import './screen/loginScreen.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -20,8 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.blue,
-          bottomSheetTheme:
-              BottomSheetThemeData(backgroundColor: Colors.black)),
+          bottomSheetTheme: BottomSheetThemeData(
+            backgroundColor: Color.fromRGBO(71, 20, 61, 1),
+          )),
       home: HomeScreen(),
       routes: {
         OxygenScreen.routeName: (context) => OxygenScreen(),

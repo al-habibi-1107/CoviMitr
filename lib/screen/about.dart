@@ -7,6 +7,7 @@ class About extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -17,10 +18,10 @@ class About extends StatelessWidget {
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              radius: 80,
+              radius: 60,
               //backgroundImage: AssetImage("assets/image/IMG_3981.PNG"),
             ),
             Text(
@@ -48,8 +49,10 @@ class About extends StatelessWidget {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+              margin: EdgeInsets.symmetric(
+                  horizontal: deviceSize.width * 0.12, vertical: 10.0),
               child: ListTile(
+                horizontalTitleGap: 0,
                 leading: Icon(
                   Icons.email_sharp,
                   color: Colors.teal,
@@ -64,11 +67,11 @@ class About extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 60,
+              height: 30,
               child: Divider(color: Colors.teal.shade50, thickness: 1.0),
             ),
             CircleAvatar(
-              radius: 80,
+              radius: 60,
               backgroundImage: AssetImage("assets/image/IMG_3981.PNG"),
             ),
             Text(
@@ -96,8 +99,10 @@ class About extends StatelessWidget {
             ),
             Card(
               color: Colors.white,
-              margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+              margin: EdgeInsets.symmetric(
+                  horizontal: deviceSize.width * 0.12, vertical: 10.0),
               child: ListTile(
+                horizontalTitleGap: 0,
                 leading: Icon(
                   Icons.email_sharp,
                   color: Colors.teal,
