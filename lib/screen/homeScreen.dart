@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:covimitr/screen/about.dart';
 import 'package:covimitr/screen/medicine_screen.dart';
 import 'package:covimitr/screen/oxygen_screen.dart';
 import 'package:covimitr/screen/plasma_screen.dart';
@@ -52,6 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                       fontSize: 40),
                 ),
+                SizedBox(
+                  width: deviceSize.width * 0.3,
+                ),
+                IconButton(
+                    icon: Icon(
+                      Icons.info_outline,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(About.routeName);
+                    })
               ],
             ),
             Row(
