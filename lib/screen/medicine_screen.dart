@@ -13,8 +13,11 @@ class MedicineScreen extends StatefulWidget {
 class _MedicineScreenState extends State<MedicineScreen> {
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(71, 20, 61, 0.9),
         title: Text("Medicine Data"),
         elevation: 0.0,
       ),
@@ -34,33 +37,115 @@ class _MedicineScreenState extends State<MedicineScreen> {
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
-                      return Card(
+                      return Container(
+                        height: deviceSize.height * 0.325,
+                        width: deviceSize.width,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              spreadRadius: 0.5,
+                            )
+                          ],
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 0.75,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white,
+                        ),
                         margin: EdgeInsets.symmetric(
                             horizontal: 18.0, vertical: 10.0),
-                        elevation: 2.0,
-                        child: ExpansionTile(
-                          title: Text(
-                            "Name: ${supData['name']}\n",
-                          ),
-                          subtitle: Text("Location: ${supData['state']}"),
-                          childrenPadding: EdgeInsets.symmetric(
-                            horizontal: 18,
-                            vertical: 5.0,
-                          ),
-                          expandedCrossAxisAlignment:
-                              CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              "ContactNo: ${supData['contact']}\n",
-                              textAlign: TextAlign.left,
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 18.0,
+                              vertical: 10.0,
                             ),
-                            Text("Status: ${supData['status']}\n"),
-                            Text("Availability: ${supData['types']}\n"),
-                            Text("Link: ${supData['link']}\n"),
-                            Text("City: ${supData['city']}\n"),
-                            Text("Last Updated: ${supData['lastUpdate']}\n"),
-                            Text("Additional Info: ${supData['addInfo']}\n")
-                          ],
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${supData['name']}",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: deviceSize.height * 0.01,
+                                ),
+                                Text("Last Updated: ${supData['lastUpdate']}"),
+                                Text("Status: ${supData['status']}"),
+                                Text("Availability: ${supData['types']}"),
+                                Text("Link: ${supData['link']}\n"),
+                                Text("Additional Info: ${supData['addInfo']}"),
+                                Divider(
+                                  color: Color.fromRGBO(71, 20, 61, 0.5),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Icon(
+                                          Icons.location_on_outlined,
+                                          color: Color.fromRGBO(71, 20, 61, 1),
+                                        ),
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Container(
+                                          width: deviceSize.width * 0.8,
+                                          child: Center(
+                                            child: Text(
+                                              "${supData['city']}",
+                                              overflow: TextOverflow.clip,
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+//for Phone Number
+                                    // Column(
+                                    //   children: [
+                                    //     SizedBox(
+                                    //       height: deviceSize.height * 0.005,
+                                    //     ),
+                                    //     Icon(
+                                    //       Icons.phone_in_talk_outlined,
+                                    //       color: Color.fromRGBO(71, 20, 61, 1),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       height: deviceSize.height * 0.005,
+                                    //     ),
+                                    //     Container(
+                                    //       width: deviceSize.width * 0.3,
+                                    //       child: Center(
+                                    //         child: supData['contactNo'] == null
+                                    //             ? Text('Not Availaible')
+                                    //             : Text(
+                                    //                 "${supData['contactNo']}",
+                                    //                 style: TextStyle(
+                                    //                   fontSize: 12,
+                                    //                 ),
+                                    //               ),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     },
