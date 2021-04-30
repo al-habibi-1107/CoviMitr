@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 import 'package:covimitr/services/data.dart';
+import 'package:intl/intl.dart';
 
 class OxygenScreen extends StatefulWidget {
   static const routeName = '/oxy-data';
@@ -38,8 +39,11 @@ class _OxygenScreenState extends State<OxygenScreen> {
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
+                      DateTime strtDate =
+                          DateTime.parse(supData['currentStatus']);
+                      String updateDate = DateFormat.MMMEd().format(strtDate);
                       return Container(
-                        height: deviceSize.height * 0.2,
+                        //height: deviceSize.height * 0.2,
                         width: deviceSize.width,
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -76,8 +80,9 @@ class _OxygenScreenState extends State<OxygenScreen> {
                               SizedBox(
                                 height: deviceSize.height * 0.01,
                               ),
-                              Text("Last Updated: ${supData['lastUpdate']}"),
-                              Text("Status: ${supData['currentStatus']}"),
+                              Text("Last Updated: $updateDate"),
+                              Text("Status: ${supData['lastUpdate']}"),
+                              Text("Address: ${supData['status']}"),
                               SizedBox(
                                 height: deviceSize.height * 0.005,
                               ),

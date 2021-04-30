@@ -38,7 +38,7 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       return Container(
-                        height: deviceSize.height * 0.25,
+                        //  height: deviceSize.height * 0.25,
                         width: deviceSize.width,
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -75,12 +75,20 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
                               SizedBox(
                                 height: deviceSize.height * 0.01,
                               ),
-                              Text("Status: ${supData['status']}"),
-                              Text(
-                                  "Last Verified Date: ${supData['lastUpdate']}"),
-                              Text(
-                                  "Additional Info: ${supData['additionalInfo']}"),
-                              Text("Additional Link: ${supData['link']}"),
+                              supData['status'] == ''
+                                  ? Container()
+                                  : Text("Status: ${supData['status']}"),
+                              supData['lastUpdate'] == ''
+                                  ? Container()
+                                  : Text(
+                                      "Last Verified Date: ${supData['lastUpdate']}"),
+                              supData['additionalInfo'] == ''
+                                  ? Container()
+                                  : Text(
+                                      "Additional Info: ${supData['additionalInfo']}"),
+                              supData['link'] == ''
+                                  ? Container()
+                                  : Text("Additional Link: ${supData['link']}"),
                               SizedBox(
                                 height: deviceSize.height * 0.005,
                               ),
