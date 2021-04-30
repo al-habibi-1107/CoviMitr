@@ -39,7 +39,7 @@ class _TestingScreenState extends State<TestingScreen> {
                         ? SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, childAspectRatio: 3)
                         : SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1, childAspectRatio: 2),
+                            crossAxisCount: 1, childAspectRatio: 1.63),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       return Container(
