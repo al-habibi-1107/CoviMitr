@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covimitr/services/data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
 
 class MedicineScreen extends StatefulWidget {
   static const routeName = '/med-screen';
@@ -37,8 +38,10 @@ class _MedicineScreenState extends State<MedicineScreen> {
                   child: ListView.builder(
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
+                      DateTime strtDate = DateTime.parse(supData['lastUpdate']);
+                      String updateDate = DateFormat.MMMEd().format(strtDate);
                       return Container(
-                        height: deviceSize.height * 0.325,
+                        //height: deviceSize.height * 0.325,
                         width: deviceSize.width,
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -76,7 +79,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                 SizedBox(
                                   height: deviceSize.height * 0.01,
                                 ),
-                                Text("Last Updated: ${supData['lastUpdate']}"),
+                                Text("Last Updated: $updateDate"),
                                 Text("Status: ${supData['status']}"),
                                 Text("Availability: ${supData['types']}"),
                                 Text("Link: ${supData['link']}\n"),

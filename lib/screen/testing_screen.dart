@@ -34,12 +34,17 @@ class _TestingScreenState extends State<TestingScreen> {
                 List oxyData = jsonDecode(resOxy.body);
 
                 return SafeArea(
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate: deviceSize.width > 1200
+                        ? SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 3)
+                        : SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, childAspectRatio: 2),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       return Container(
-                        height: deviceSize.height * 0.35,
-                        width: deviceSize.width,
+                        // height: deviceSize.height * 0.35,
+                        //width: deviceSize.width,
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -75,15 +80,23 @@ class _TestingScreenState extends State<TestingScreen> {
                               SizedBox(
                                 height: deviceSize.height * 0.01,
                               ),
-                              Text("Link: ${supData['link']}"),
-                              Text("Email: ${supData['email']}"),
-                              Text("Status: ${supData['status']}"),
+                              supData['link'] == ''
+                                  ? Container()
+                                  : Text("Link: ${supData['link']}"),
+                              supData['email'] == ''
+                                  ? Container()
+                                  : Text("Email: ${supData['email']}"),
+                              supData['status'] == ''
+                                  ? Container()
+                                  : Text("Status: ${supData['status']}"),
                               Container(
                                   width: deviceSize.width * 0.8,
-                                  child: Text(
-                                    "Last Updated: ${supData['lastVerified']}",
-                                    overflow: TextOverflow.clip,
-                                  )),
+                                  child: supData['lastVerified'] == ''
+                                      ? Container()
+                                      : Text(
+                                          "Last Updated: ${supData['lastVerified']}",
+                                          overflow: TextOverflow.clip,
+                                        )),
                               SizedBox(
                                 height: deviceSize.height * 0.005,
                               ),
@@ -108,15 +121,29 @@ class _TestingScreenState extends State<TestingScreen> {
                                         height: deviceSize.height * 0.005,
                                       ),
                                       Container(
-                                        width: deviceSize.width * 0.5,
+                                        //width: deviceSize.width * 0.5,
                                         child: Center(
-                                          child: supData['location'] == null
+                                          child: (supData['location'] == null ||
+                                                  supData['location'] == '')
                                               ? Text('Not Availaible')
-                                              : Text(
-                                                  "${supData['location']}",
-                                                  overflow: TextOverflow.clip,
-                                                  style:
-                                                      TextStyle(fontSize: 12),
+                                              : Container(
+                                                  width: (supData['location']
+                                                                  .toString()
+                                                                  .length >
+                                                              20 &&
+                                                          deviceSize.width <
+                                                              1200)
+                                                      ? deviceSize.width * 0.5
+                                                      : 90,
+                                                  child: Text(
+                                                    "${supData['location']}",
+                                                    overflow: TextOverflow.clip,
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                    ),
+                                                    maxLines: 3,
+                                                    textAlign: TextAlign.center,
+                                                  ),
                                                 ),
                                         ),
                                       ),
@@ -135,9 +162,11 @@ class _TestingScreenState extends State<TestingScreen> {
                                         height: deviceSize.height * 0.005,
                                       ),
                                       Container(
-                                        width: deviceSize.width * 0.3,
+                                        // width: deviceSize.width * 0.3,
                                         child: Center(
-                                          child: (supData['contactNo'] == null)
+                                          child: (supData['contactNo'] ==
+                                                      null ||
+                                                  supData['contactNo'] == '')
                                               ? Text('Not Availaible')
                                               : Text(
                                                   "${supData['contactNo']}",
