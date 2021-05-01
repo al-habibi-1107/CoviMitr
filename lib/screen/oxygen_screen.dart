@@ -37,12 +37,21 @@ class _OxygenScreenState extends State<OxygenScreen> {
                 List oxyData = jsonDecode(resOxy.body);
 
                 return SafeArea(
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate: deviceSize.width > 1200
+                        ? SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 3)
+                        : SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, childAspectRatio: 2),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
-                      DateTime strtDate =
-                          DateTime.parse(supData['currentStatus']);
-                      String updateDate = DateFormat.MMMEd().format(strtDate);
+                      String updateDate = '';
+
+                      if (supData['currentStatus'].toString() != '') {
+                        DateTime strtDate =
+                            DateTime.parse(supData['currentStatus']);
+                        updateDate = DateFormat.MMMEd().format(strtDate);
+                      }
                       return Container(
                         //height: deviceSize.height * 0.2,
                         width: deviceSize.width,
@@ -90,47 +99,62 @@ class _OxygenScreenState extends State<OxygenScreen> {
                               Divider(
                                 color: Color.fromRGBO(71, 20, 61, 0.5),
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.015,
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: deviceSize.height * 0.015,
+                                          ),
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            color:
+                                                Color.fromRGBO(71, 20, 61, 1),
+                                          ),
+                                          SizedBox(
+                                            height: deviceSize.height * 0.005,
+                                          ),
+                                          Text(
+                                            "${supData['city']}",
+                                            maxLines: 3,
+                                          ),
+                                        ],
                                       ),
-                                      Icon(
-                                        Icons.location_on_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: deviceSize.height * 0.015,
+                                          ),
+                                          Icon(
+                                            Icons.phone_in_talk_outlined,
+                                            color:
+                                                Color.fromRGBO(71, 20, 61, 1),
+                                          ),
+                                          SizedBox(
+                                            height: deviceSize.height * 0.005,
+                                          ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              "${supData['phoneNo']}",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                              ),
+                                              maxLines: 3,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Text("${supData['city']}"),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.015,
-                                      ),
-                                      Icon(
-                                        Icons.phone_in_talk_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
-                                      ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Text(
-                                        "${supData['phoneNo']}",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

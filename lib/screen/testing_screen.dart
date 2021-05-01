@@ -39,7 +39,7 @@ class _TestingScreenState extends State<TestingScreen> {
                         ? SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, childAspectRatio: 3)
                         : SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1, childAspectRatio: 1.63),
+                            crossAxisCount: 1, childAspectRatio: 2),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       return Container(
@@ -108,34 +108,27 @@ class _TestingScreenState extends State<TestingScreen> {
                                     MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Icon(
-                                        Icons.location_on_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
-                                      ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Container(
-                                        //width: deviceSize.width * 0.5,
-                                        child: Center(
-                                          child: (supData['location'] == null ||
-                                                  supData['location'] == '')
-                                              ? Text('Not Availaible')
-                                              : Container(
-                                                  width: (supData['location']
-                                                                  .toString()
-                                                                  .length >
-                                                              20 &&
-                                                          deviceSize.width <
-                                                              1200)
-                                                      ? deviceSize.width * 0.5
-                                                      : 90,
-                                                  child: Text(
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Icon(
+                                          Icons.location_on_outlined,
+                                          color: Color.fromRGBO(71, 20, 61, 1),
+                                        ),
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Container(
+                                          //width: deviceSize.width * 0.5,
+                                          child: Center(
+                                            child: (supData['location'] ==
+                                                        null ||
+                                                    supData['location'] == '')
+                                                ? Text('Not Availaible')
+                                                : Text(
                                                     "${supData['location']}",
                                                     overflow: TextOverflow.clip,
                                                     style: TextStyle(
@@ -144,26 +137,27 @@ class _TestingScreenState extends State<TestingScreen> {
                                                     maxLines: 3,
                                                     textAlign: TextAlign.center,
                                                   ),
-                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Icon(
-                                        Icons.phone_in_talk_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
-                                      ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Container(
-                                        // width: deviceSize.width * 0.3,
-                                        child: Center(
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Icon(
+                                          Icons.phone_in_talk_outlined,
+                                          color: Color.fromRGBO(71, 20, 61, 1),
+                                        ),
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Container(
+                                          // width: deviceSize.width * 0.3,
+
                                           child: (supData['contactNo'] ==
                                                       null ||
                                                   supData['contactNo'] == '')
@@ -175,8 +169,8 @@ class _TestingScreenState extends State<TestingScreen> {
                                                   ),
                                                 ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

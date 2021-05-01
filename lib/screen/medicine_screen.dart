@@ -35,7 +35,12 @@ class _MedicineScreenState extends State<MedicineScreen> {
                 List oxyData = jsonDecode(resOxy.body);
 
                 return SafeArea(
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate: deviceSize.width > 1200
+                        ? SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 3)
+                        : SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, childAspectRatio: 1.7),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       DateTime strtDate = DateTime.parse(supData['lastUpdate']);
@@ -92,30 +97,56 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                       MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: deviceSize.height * 0.005,
-                                        ),
-                                        Icon(
-                                          Icons.location_on_outlined,
-                                          color: Color.fromRGBO(71, 20, 61, 1),
-                                        ),
-                                        SizedBox(
-                                          height: deviceSize.height * 0.005,
-                                        ),
-                                        Container(
-                                          width: deviceSize.width * 0.8,
-                                          child: Center(
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: deviceSize.height * 0.005,
+                                          ),
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            color:
+                                                Color.fromRGBO(71, 20, 61, 1),
+                                          ),
+                                          SizedBox(
+                                            height: deviceSize.height * 0.005,
+                                          ),
+                                          Container(
                                             child: Text(
                                               "${supData['city']}",
                                               overflow: TextOverflow.clip,
                                               style: TextStyle(fontSize: 12),
+                                              maxLines: 3,
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: deviceSize.height * 0.015,
+                                          ),
+                                          Icon(
+                                            Icons.phone_in_talk_outlined,
+                                            color:
+                                                Color.fromRGBO(71, 20, 61, 1),
+                                          ),
+                                          SizedBox(
+                                            height: deviceSize.height * 0.005,
+                                          ),
+                                          Text(
+                                            "${supData['contact']}",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                            ),
+                                            maxLines: 3,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
 //for Phone Number
                                     // Column(
                                     //   children: [
