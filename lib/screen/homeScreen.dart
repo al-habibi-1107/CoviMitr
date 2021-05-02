@@ -3,6 +3,7 @@ import 'package:covimitr/screen/medicine_screen.dart';
 import 'package:covimitr/screen/oxygen_screen.dart';
 import 'package:covimitr/screen/plasma_screen.dart';
 import 'package:covimitr/screen/testing_screen.dart';
+import '../shared/home_tile.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,201 +18,69 @@ class _HomeScreenState extends State<HomeScreen> {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromRGBO(71, 20, 61, 1),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   title: Text(
-      //     "CoviMitr",
-      //     style: TextStyle(fontWeight: FontWeight.bold),
-      //   ),
-      //   elevation: 0,
-      // ),
-      // body: Center(
-      //   child: TextButton(
-      //       onPressed: () async {
-      //         await Data().getOxyData();
-      //       },
-      //       child: Text("Get Data")),
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "CoviMitr",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        elevation: 0,
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.info_outline,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed(About.routeName);
+              })
+        ],
+      ),
       body: SafeArea(
         child: Column(
           children: [
             SizedBox(
-              height: deviceSize.height * 0.03,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: deviceSize.width * 0.1,
-                ),
-                Text(
-                  "CoviMitr",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 40),
-                ),
-                SizedBox(
-                  width: deviceSize.width * 0.3,
-                ),
-                IconButton(
-                    icon: Icon(
-                      Icons.info_outline,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(About.routeName);
-                    })
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: deviceSize.width * 0.1,
-                  height: 10,
-                ),
-                Text(
-                  "Together We Can..!!",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 17),
-                ),
-              ],
-            ),
-            SizedBox(
               height: deviceSize.height * 0.05,
             ),
-            Center(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.all(0.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(OxygenScreen.routeName);
-                },
-                child: Container(
-                  height: deviceSize.height * 0.1,
-                  width: deviceSize.width * 0.6,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color.fromRGBO(185, 151, 80, 1),
-                      width: 0.75,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                    color: Color.fromRGBO(185, 151, 80, 0.3),
+            Expanded(
+              child: GridView(
+                gridDelegate: deviceSize.width > 1200
+                    ? SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3, childAspectRatio: 3)
+                    : SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2, childAspectRatio: 2),
+                children: [
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(OxygenScreen.routeName);
+                    },
+                    text: "Oxygen Requirements",
+                    deviceSize: deviceSize,
                   ),
-                  margin: EdgeInsets.all(18.0),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Oxygen Requirements",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(MedicineScreen.routeName);
+                    },
+                    text: "Medicine Requirements",
+                    deviceSize: deviceSize,
                   ),
-                ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(TestingScreen.routeName);
+                    },
+                    text: "Testing Requirements",
+                    deviceSize: deviceSize,
+                  ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(PlasmaScreen.routeName);
+                    },
+                    text: "Plasma Requirements",
+                    deviceSize: deviceSize,
+                  ),
+                ],
               ),
-            ),
-            Center(
-              child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(MedicineScreen.routeName);
-                },
-                child: Container(
-                  height: deviceSize.height * 0.1,
-                  width: deviceSize.width * 0.6,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color.fromRGBO(185, 151, 80, 1),
-                        width: 0.75,
-                      ),
-                      color: Color.fromRGBO(185, 151, 80, 0.3),
-                      borderRadius: BorderRadius.circular(5)),
-                  margin: EdgeInsets.all(18.0),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Medicine Requirements",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(PlasmaScreen.routeName);
-                },
-                child: Container(
-                  height: deviceSize.height * 0.1,
-                  width: deviceSize.width * 0.6,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color.fromRGBO(185, 151, 80, 1),
-                        width: 0.75,
-                      ),
-                      color: Color.fromRGBO(185, 151, 80, 0.3),
-                      borderRadius: BorderRadius.circular(5)),
-                  margin: EdgeInsets.all(18.0),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Plasma Requirements",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: TextButton(
-                style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(TestingScreen.routeName);
-                },
-                child: Container(
-                  height: deviceSize.height * 0.1,
-                  width: deviceSize.width * 0.6,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Color.fromRGBO(185, 151, 80, 1),
-                        width: 0.75,
-                      ),
-                      color: Color.fromRGBO(185, 151, 80, 0.3),
-                      borderRadius: BorderRadius.circular(5)),
-                  margin: EdgeInsets.all(18.0),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Testing Requirements",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            )
           ],
         ),
       ),

@@ -34,7 +34,12 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
                 List oxyData = jsonDecode(resOxy.body);
 
                 return SafeArea(
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate: deviceSize.width > 1200
+                        ? SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 3)
+                        : SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1, childAspectRatio: 2.5),
                     itemBuilder: (context, index) {
                       var supData = oxyData[index];
                       return Container(
@@ -100,59 +105,63 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
                                     MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Icon(
-                                        Icons.location_on_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
-                                      ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Container(
-                                        width: deviceSize.width * 0.5,
-                                        child: Center(
-                                          child: supData['city'] == ""
-                                              ? Text('Not Availaible')
-                                              : Text(
-                                                  "${supData['city']}",
-                                                  overflow: TextOverflow.clip,
-                                                  style:
-                                                      TextStyle(fontSize: 12),
-                                                ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Icon(
-                                        Icons.phone_in_talk_outlined,
-                                        color: Color.fromRGBO(71, 20, 61, 1),
-                                      ),
-                                      SizedBox(
-                                        height: deviceSize.height * 0.005,
-                                      ),
-                                      Container(
-                                        width: deviceSize.width * 0.3,
-                                        child: Center(
-                                          child: (supData['phoneNo'] == "")
-                                              ? Text('Not Availaible')
-                                              : Text(
-                                                  "${supData['phoneNo']}",
-                                                  style: TextStyle(
-                                                    fontSize: 12,
+                                        Icon(
+                                          Icons.location_on_outlined,
+                                          color: Color.fromRGBO(71, 20, 61, 1),
+                                        ),
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Container(
+                                          width: deviceSize.width * 0.5,
+                                          child: Center(
+                                            child: supData['city'] == ""
+                                                ? Text('Not Availaible')
+                                                : Text(
+                                                    "${supData['city']}",
+                                                    overflow: TextOverflow.clip,
+                                                    style:
+                                                        TextStyle(fontSize: 12),
                                                   ),
-                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Icon(
+                                          Icons.phone_in_talk_outlined,
+                                          color: Color.fromRGBO(71, 20, 61, 1),
+                                        ),
+                                        SizedBox(
+                                          height: deviceSize.height * 0.005,
+                                        ),
+                                        Container(
+                                          width: deviceSize.width * 0.3,
+                                          child: Center(
+                                            child: (supData['phoneNo'] == "")
+                                                ? Text('Not Availaible')
+                                                : Text(
+                                                    "${supData['phoneNo']}",
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                    ),
+                                                  ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
