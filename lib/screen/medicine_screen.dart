@@ -12,6 +12,8 @@ class MedicineScreen extends StatefulWidget {
 }
 
 class _MedicineScreenState extends State<MedicineScreen> {
+  String filterBy = '';
+  bool isTru = false;
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -22,173 +24,224 @@ class _MedicineScreenState extends State<MedicineScreen> {
         title: Text("Medicine Data"),
         elevation: 0.0,
       ),
-      body: FutureBuilder(
-          future: Data().getMedicineData(),
-          builder: (context, oxySnapshot) {
-            if (oxySnapshot.hasError) {
-              return Text("Getting Data...");
-            } else {
-              if (oxySnapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              } else {
-                Response resOxy = oxySnapshot.data;
-                List oxyData = jsonDecode(resOxy.body);
-
-                return SafeArea(
-                  child: GridView.builder(
-                    gridDelegate: deviceSize.width > 1200
-                        ? SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 3)
-                        : SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1, childAspectRatio: 1.7),
-                    itemBuilder: (context, index) {
-                      var supData = oxyData[index];
-                      DateTime strtDate = DateTime.parse(supData['lastUpdate']);
-                      String updateDate = DateFormat.MMMEd().format(strtDate);
-                      return Container(
-                        //height: deviceSize.height * 0.325,
-                        width: deviceSize.width,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 10,
-                              spreadRadius: 0.5,
-                            )
-                          ],
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 0.75,
-                          ),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
+      body: Column(
+        children: [
+          deviceSize.width > 1200
+              ? Container()
+              : Form(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          onChanged: (value) {
+                            filterBy = value;
+                          },
+                          onEditingComplete: () {
+                            setState(() {
+                              if (filterBy != '') {
+                                isTru = true;
+                              } else {
+                                isTru = false;
+                              }
+                            });
+                          },
                         ),
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 10.0),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 18.0,
-                              vertical: 10.0,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${supData['name']}",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: deviceSize.height * 0.01,
-                                ),
-                                Text("Last Updated: $updateDate"),
-                                Text("Status: ${supData['status']}"),
-                                Text("Availability: ${supData['types']}"),
-                                Text("Link: ${supData['link']}\n"),
-                                Text("Additional Info: ${supData['addInfo']}"),
-                                Divider(
-                                  color: Color.fromRGBO(71, 20, 61, 0.5),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: deviceSize.height * 0.005,
-                                          ),
-                                          Icon(
-                                            Icons.location_on_outlined,
-                                            color:
-                                                Color.fromRGBO(71, 20, 61, 1),
-                                          ),
-                                          SizedBox(
-                                            height: deviceSize.height * 0.005,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              "${supData['city']}",
-                                              overflow: TextOverflow.clip,
-                                              style: TextStyle(fontSize: 12),
-                                              maxLines: 3,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: deviceSize.height * 0.015,
-                                          ),
-                                          Icon(
-                                            Icons.phone_in_talk_outlined,
-                                            color:
-                                                Color.fromRGBO(71, 20, 61, 1),
-                                          ),
-                                          SizedBox(
-                                            height: deviceSize.height * 0.005,
-                                          ),
-                                          Text(
-                                            "${supData['contact']}",
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                            ),
-                                            maxLines: 3,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-
-//for Phone Number
-                                    // Column(
-                                    //   children: [
-                                    //     SizedBox(
-                                    //       height: deviceSize.height * 0.005,
-                                    //     ),
-                                    //     Icon(
-                                    //       Icons.phone_in_talk_outlined,
-                                    //       color: Color.fromRGBO(71, 20, 61, 1),
-                                    //     ),
-                                    //     SizedBox(
-                                    //       height: deviceSize.height * 0.005,
-                                    //     ),
-                                    //     Container(
-                                    //       width: deviceSize.width * 0.3,
-                                    //       child: Center(
-                                    //         child: supData['contactNo'] == null
-                                    //             ? Text('Not Availaible')
-                                    //             : Text(
-                                    //                 "${supData['contactNo']}",
-                                    //                 style: TextStyle(
-                                    //                   fontSize: 12,
-                                    //                 ),
-                                    //               ),
-                                    //       ),
-                                    //     ),
-                                    //   ],
-                                    // ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    itemCount: oxyData.length,
+                      ),
+                      TextButton.icon(
+                          onPressed: () {},
+                          icon: Icon(Icons.search),
+                          label: Container())
+                    ],
                   ),
-                );
-              }
-            }
-          }),
+                ),
+          Expanded(
+            child: FutureBuilder(
+                future: Data().getMedicineData(),
+                builder: (context, oxySnapshot) {
+                  if (oxySnapshot.hasError) {
+                    return Text("Getting Data...");
+                  } else {
+                    if (oxySnapshot.connectionState ==
+                        ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    } else {
+                      Response resOxy = oxySnapshot.data;
+                      List oxyData = jsonDecode(resOxy.body);
+
+                      return SafeArea(
+                        child: deviceSize.width > 1200
+                            ? GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        childAspectRatio: 2.4),
+                                itemBuilder: (context, index) {
+                                  var supData = oxyData[index];
+                                  String updateDate = 'NA';
+                                  if (supData['lastUpdate'] != '') {
+                                    DateTime strtDate =
+                                        DateTime.parse(supData['lastUpdate']);
+                                    updateDate =
+                                        DateFormat.MMMEd().format(strtDate);
+                                  }
+
+                                  return CardCustom(
+                                      supData, deviceSize, updateDate);
+                                },
+                                itemCount: oxyData.length,
+                              )
+                            : ListView.builder(
+                                itemBuilder: (context, index) {
+                                  var supData = oxyData[index];
+                                  String updateDate = 'NA';
+                                  if (supData['lastUpdate'] != '') {
+                                    DateTime strtDate =
+                                        DateTime.parse(supData['lastUpdate']);
+                                    updateDate =
+                                        DateFormat.MMMEd().format(strtDate);
+                                  }
+                                  if (filterBy != '') {
+                                    if (supData['city']
+                                        .toString()
+                                        .toLowerCase()
+                                        .contains(filterBy.toLowerCase())) {
+                                      return CardCustom(
+                                          supData, deviceSize, updateDate);
+                                    } else {
+                                      return Container();
+                                    }
+                                  } else {
+                                    return CardCustom(
+                                        supData, deviceSize, updateDate);
+                                  }
+                                },
+                                itemCount: oxyData.length,
+                              ),
+                      );
+                    }
+                  }
+                }),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CardCustom extends StatelessWidget {
+  final supData;
+  final deviceSize;
+  final updateDate;
+  CardCustom(this.supData, this.deviceSize, this.updateDate);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: deviceSize.width,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 10,
+            spreadRadius: 0.5,
+          )
+        ],
+        border: Border.all(
+          color: Colors.white,
+          width: 0.75,
+        ),
+        borderRadius: BorderRadius.circular(5),
+        color: Colors.white,
+      ),
+      margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 18.0,
+            vertical: 10.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${supData['name']}",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: deviceSize.height * 0.01,
+              ),
+              Text("Last Updated: $updateDate"),
+              Text("Status: ${supData['status']}"),
+              supData['types'].toString().length < 120
+                  ? Text("Availability: ${supData['types']}")
+                  : Text(
+                      "Availability: ${supData['types']}",
+                      style: TextStyle(fontSize: 5),
+                    ),
+              Text("Link: ${supData['link']}\n"),
+              Text("Additional Info: ${supData['addInfo']}"),
+              Divider(
+                color: Color.fromRGBO(71, 20, 61, 0.5),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: deviceSize.height * 0.005,
+                        ),
+                        Icon(
+                          Icons.location_on_outlined,
+                          color: Color.fromRGBO(71, 20, 61, 1),
+                        ),
+                        SizedBox(
+                          height: deviceSize.height * 0.005,
+                        ),
+                        Container(
+                          child: Text(
+                            "${supData['city']}",
+                            overflow: TextOverflow.clip,
+                            style: TextStyle(fontSize: 12),
+                            maxLines: 3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: deviceSize.height * 0.015,
+                        ),
+                        Icon(
+                          Icons.phone_in_talk_outlined,
+                          color: Color.fromRGBO(71, 20, 61, 1),
+                        ),
+                        SizedBox(
+                          height: deviceSize.height * 0.005,
+                        ),
+                        Text(
+                          "${supData['contact']}",
+                          style: TextStyle(
+                            fontSize: 15,
+                          ),
+                          maxLines: 3,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
