@@ -204,7 +204,7 @@ class About extends StatelessWidget {
                           title: Text(
                             "kamilanwar2001@gmail.com",
                             style: GoogleFonts.sourceSansPro(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.teal,
                             ),
                           ),
@@ -258,7 +258,7 @@ class About extends StatelessWidget {
                           title: Text(
                             "aditya.work2000@gmail.com",
                             style: GoogleFonts.sourceSansPro(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.teal,
                             ),
                           ),
