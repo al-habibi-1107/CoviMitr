@@ -26,12 +26,12 @@ class HomeTile extends StatelessWidget {
           margin: EdgeInsets.all(18.0),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
                 text,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold),
               ),
             ),
