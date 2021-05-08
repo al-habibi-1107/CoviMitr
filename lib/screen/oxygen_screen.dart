@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 // ignore: unused_import
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -66,7 +67,11 @@ class _OxygenScreenState extends State<OxygenScreen> {
                   } else {
                     if (oxySnapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return Center(
+                          child: SpinKitFoldingCube(
+                        color: Color.fromRGBO(71, 20, 61, 0.9),
+                        size: 30,
+                      ));
                     } else {
                       Response resOxy = oxySnapshot.data;
                       List oxyData = jsonDecode(resOxy.body);

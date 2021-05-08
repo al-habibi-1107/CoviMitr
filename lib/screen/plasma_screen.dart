@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:covimitr/services/data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart';
 
 class PlasmaScreen extends StatefulWidget {
@@ -28,7 +29,11 @@ class _PlasmaScreenState extends State<PlasmaScreen> {
               return Text("Getting Data...");
             } else {
               if (oxySnapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                    child: SpinKitFoldingCube(
+                  color: Color.fromRGBO(71, 20, 61, 0.9),
+                  size: 30,
+                ));
               } else {
                 Response resOxy = oxySnapshot.data;
                 List oxyData = jsonDecode(resOxy.body);
