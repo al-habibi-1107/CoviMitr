@@ -11,8 +11,9 @@ class Data extends ChangeNotifier {
     try {
       var data = await http.get(Uri.https(
         "script.google.com",
-        "/macros/s/AKfycbxAZlsVWiyrkFL1Zt94JMvmvSjgXZaS_FdeuglHWAWEoZ9Mtcg7yAYzapcNgIaNCMqnOw/exec",
+        "/macros/s/AKfycbywZp-qcAowD3oI6h9x2jfPKIIJPBNrfy-Sn4oJW234_rrKCekPl_JMZtgPeMqDpSqc-g/exec",
       ));
+
       if (data.statusCode == 200) {
         return data;
       }

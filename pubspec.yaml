@@ -27,6 +27,7 @@ dependencies:
   provider:
   http: 
   intl:
+  flutter_spinkit: ^5.0.0
   
 
 

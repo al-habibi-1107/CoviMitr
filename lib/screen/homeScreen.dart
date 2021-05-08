@@ -44,11 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: GridView(
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 gridDelegate: deviceSize.width > 1200
                     ? SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3, childAspectRatio: 3)
-                    : SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, childAspectRatio: 2),
+                    : SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: deviceSize.width * 0.4,
+                        childAspectRatio: 1,
+                        crossAxisSpacing: 30,
+                        mainAxisSpacing: 20),
                 children: [
                   HomeTile(
                     onPressed: () {

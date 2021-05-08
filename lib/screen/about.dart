@@ -22,7 +22,7 @@ class About extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 60,
-              //backgroundImage: AssetImage("assets/image/IMG_3981.PNG"),
+              backgroundImage: AssetImage("assets/image/Kamil.jpg"),
             ),
             Text(
               "Kamil Anwar",
