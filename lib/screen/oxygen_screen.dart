@@ -32,30 +32,56 @@ class _OxygenScreenState extends State<OxygenScreen> {
         children: [
           deviceSize.width > 1200
               ? Container()
-              : Form(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          onChanged: (value) {
-                            filterBy = value;
-                          },
-                          onEditingComplete: () {
-                            setState(() {
-                              if (filterBy != '') {
-                                isTru = true;
-                              } else {
-                                isTru = false;
-                              }
-                            });
-                          },
-                        ),
-                      ),
-                      TextButton.icon(
-                          onPressed: () {},
-                          icon: Icon(Icons.search),
-                          label: Container())
+              : Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.0,
+                  ),
+                  margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+                  width: deviceSize.width,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 10,
+                        spreadRadius: 0.5,
+                      )
                     ],
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 0.75,
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.white,
+                  ),
+                  child: Form(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Search",
+                            ),
+                            onChanged: (value) {
+                              filterBy = value;
+                            },
+                            onEditingComplete: () {
+                              setState(() {
+                                if (filterBy != '') {
+                                  isTru = true;
+                                } else {
+                                  isTru = false;
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                        TextButton.icon(
+                            onPressed: () {},
+                            icon: Icon(Icons.search),
+                            label: Container())
+                      ],
+                    ),
                   ),
                 ),
           Expanded(
