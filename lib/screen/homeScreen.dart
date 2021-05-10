@@ -49,37 +49,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3, childAspectRatio: 3)
                     : SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: deviceSize.width * 0.4,
+                        maxCrossAxisExtent: deviceSize.width * 0.5,
                         childAspectRatio: 1,
-                        crossAxisSpacing: 30,
+                        crossAxisSpacing: 20,
                         mainAxisSpacing: 20),
                 children: [
                   HomeTile(
                     onPressed: () {
                       Navigator.of(context).pushNamed(OxygenScreen.routeName);
                     },
-                    text: "Oxygen Requirements",
+                    text: "Oxygen",
                     deviceSize: deviceSize,
                   ),
                   HomeTile(
                     onPressed: () {
                       Navigator.of(context).pushNamed(MedicineScreen.routeName);
                     },
-                    text: "Medicine Requirements",
+                    text: "Medicine",
                     deviceSize: deviceSize,
                   ),
                   HomeTile(
                     onPressed: () {
                       Navigator.of(context).pushNamed(TestingScreen.routeName);
                     },
-                    text: "Testing Requirements",
+                    text: "Testing",
                     deviceSize: deviceSize,
                   ),
                   HomeTile(
                     onPressed: () {
                       Navigator.of(context).pushNamed(PlasmaScreen.routeName);
                     },
-                    text: "Plasma Requirements",
+                    text: "Plasma",
                     deviceSize: deviceSize,
                   ),
                 ],

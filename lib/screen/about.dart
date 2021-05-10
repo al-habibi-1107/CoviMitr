@@ -15,258 +15,260 @@ class About extends StatelessWidget {
           title: Text("Team DevPro"),
         ),
         backgroundColor: Colors.teal.shade200,
-        body: Column(children: [
-          deviceSize.width > 1200
-              ? SafeArea(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 50,
-                          ),
-                          CircleAvatar(
-                            radius: 60,
-                            backgroundImage:
-                                AssetImage("assets/image/Kamil.jpg"),
-                          ),
-                          Text(
-                            "Kamil Anwar",
-                            style: GoogleFonts.dancingScript(
-                              //pacifico
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
+        body: SingleChildScrollView(
+          child: Column(children: [
+            deviceSize.width > 1200
+                ? SafeArea(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 50,
                             ),
-                          ),
-                          Text(
-                            "FLUTTER DEVELOPER",
-                            style: GoogleFonts.sourceSansPro(
-                              color: Colors.teal.shade400,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              letterSpacing: 2.5,
+                            CircleAvatar(
+                              radius: 60,
+                              backgroundImage:
+                                  AssetImage("assets/image/Kamil.jpg"),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                            width: 150.0,
-                            child: Divider(
-                                color: Colors.teal.shade50, thickness: 1.5),
-                          ),
-                          Container(
-                            height: 60,
-                            width: deviceSize.width * 0.25,
-                            child: Card(
-                              color: Colors.white,
-                              // margin: EdgeInsets.symmetric(
-                              //     horizontal: deviceSize.width * 0.38,
-                              //     vertical: 10.0),
-                              child: ListTile(
-                                horizontalTitleGap: 0,
-                                leading: Icon(
-                                  Icons.email_sharp,
-                                  color: Colors.teal,
-                                ),
-                                title: Text(
-                                  "kamilanwar2001@gmail.com",
-                                  style: GoogleFonts.sourceSansPro(
-                                    fontSize: 20,
+                            Text(
+                              "Kamil Anwar",
+                              style: GoogleFonts.dancingScript(
+                                //pacifico
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40.0,
+                              ),
+                            ),
+                            Text(
+                              "FLUTTER DEVELOPER",
+                              style: GoogleFonts.sourceSansPro(
+                                color: Colors.teal.shade400,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                letterSpacing: 2.5,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                              width: 150.0,
+                              child: Divider(
+                                  color: Colors.teal.shade50, thickness: 1.5),
+                            ),
+                            Container(
+                              height: 60,
+                              width: deviceSize.width * 0.25,
+                              child: Card(
+                                color: Colors.white,
+                                // margin: EdgeInsets.symmetric(
+                                //     horizontal: deviceSize.width * 0.38,
+                                //     vertical: 10.0),
+                                child: ListTile(
+                                  horizontalTitleGap: 0,
+                                  leading: Icon(
+                                    Icons.email_sharp,
                                     color: Colors.teal,
+                                  ),
+                                  title: Text(
+                                    "kamilanwar2001@gmail.com",
+                                    style: GoogleFonts.sourceSansPro(
+                                      fontSize: 20,
+                                      color: Colors.teal,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 100),
-                          width: 1,
-                          height: 200,
-                          color: Colors.white,
+                          ],
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 50,
+                        SizedBox(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 100),
+                            width: 1,
+                            height: 200,
+                            color: Colors.white,
                           ),
-                          CircleAvatar(
-                            radius: 60,
-                            backgroundImage:
-                                AssetImage("assets/image/IMG_3981.PNG"),
-                          ),
-                          Text(
-                            "Aditya",
-                            style: GoogleFonts.dancingScript(
-                              //pacifico
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 50,
                             ),
-                          ),
-                          Text(
-                            "FLUTTER DEVELOPER",
-                            style: GoogleFonts.sourceSansPro(
-                              color: Colors.teal.shade400,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              letterSpacing: 2.5,
+                            CircleAvatar(
+                              radius: 60,
+                              backgroundImage:
+                                  AssetImage("assets/image/IMG_3981.PNG"),
                             ),
-                          ),
-                          SizedBox(
-                            height: 20.0,
-                            width: 150.0,
-                            child: Divider(
-                                color: Colors.teal.shade50, thickness: 1.5),
-                          ),
-                          Container(
-                            height: 60,
-                            width: deviceSize.width * 0.25,
-                            child: Card(
-                              color: Colors.white,
-                              // margin: EdgeInsets.symmetric(
-                              //     horizontal: deviceSize.width * 0.38,
-                              //     vertical: 10.0),
-                              child: ListTile(
-                                horizontalTitleGap: 0,
-                                leading: Icon(
-                                  Icons.email_sharp,
-                                  color: Colors.teal,
-                                ),
-                                title: Text(
-                                  "aditya.work2000@gmail.com",
-                                  style: GoogleFonts.sourceSansPro(
-                                    fontSize: 20,
+                            Text(
+                              "Aditya",
+                              style: GoogleFonts.dancingScript(
+                                //pacifico
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40.0,
+                              ),
+                            ),
+                            Text(
+                              "FLUTTER DEVELOPER",
+                              style: GoogleFonts.sourceSansPro(
+                                color: Colors.teal.shade400,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                letterSpacing: 2.5,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                              width: 150.0,
+                              child: Divider(
+                                  color: Colors.teal.shade50, thickness: 1.5),
+                            ),
+                            Container(
+                              height: 60,
+                              width: deviceSize.width * 0.25,
+                              child: Card(
+                                color: Colors.white,
+                                // margin: EdgeInsets.symmetric(
+                                //     horizontal: deviceSize.width * 0.38,
+                                //     vertical: 10.0),
+                                child: ListTile(
+                                  horizontalTitleGap: 0,
+                                  leading: Icon(
+                                    Icons.email_sharp,
                                     color: Colors.teal,
+                                  ),
+                                  title: Text(
+                                    "aditya.work2000@gmail.com",
+                                    style: GoogleFonts.sourceSansPro(
+                                      fontSize: 20,
+                                      color: Colors.teal,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                : SafeArea(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundImage: AssetImage("assets/image/Kamil.jpg"),
+                        ),
+                        Text(
+                          "Kamil Anwar",
+                          style: GoogleFonts.dancingScript(
+                            //pacifico
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40.0,
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              : SafeArea(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundImage: AssetImage("assets/image/Kamil.jpg"),
-                      ),
-                      Text(
-                        "Kamil Anwar",
-                        style: GoogleFonts.dancingScript(
-                          //pacifico
+                        ),
+                        Text(
+                          "FLUTTER DEVELOPER",
+                          style: GoogleFonts.sourceSansPro(
+                            color: Colors.teal.shade400,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            letterSpacing: 2.5,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                          width: 150.0,
+                          child: Divider(
+                              color: Colors.teal.shade50, thickness: 1.5),
+                        ),
+                        Card(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40.0,
-                        ),
-                      ),
-                      Text(
-                        "FLUTTER DEVELOPER",
-                        style: GoogleFonts.sourceSansPro(
-                          color: Colors.teal.shade400,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          letterSpacing: 2.5,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                        width: 150.0,
-                        child:
-                            Divider(color: Colors.teal.shade50, thickness: 1.5),
-                      ),
-                      Card(
-                        color: Colors.white,
-                        margin: EdgeInsets.symmetric(
-                            horizontal: deviceSize.width * 0.12,
-                            vertical: 10.0),
-                        child: ListTile(
-                          horizontalTitleGap: 0,
-                          leading: Icon(
-                            Icons.email_sharp,
-                            color: Colors.teal,
-                          ),
-                          title: Text(
-                            "kamilanwar2001@gmail.com",
-                            style: GoogleFonts.sourceSansPro(
-                              fontSize: 18,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: deviceSize.width * 0.12,
+                              vertical: 10.0),
+                          child: ListTile(
+                            horizontalTitleGap: 0,
+                            leading: Icon(
+                              Icons.email_sharp,
                               color: Colors.teal,
+                            ),
+                            title: Text(
+                              "kamilanwar2001@gmail.com",
+                              style: GoogleFonts.sourceSansPro(
+                                fontSize: 18,
+                                color: Colors.teal,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                        child:
-                            Divider(color: Colors.teal.shade50, thickness: 1.0),
-                      ),
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundImage:
-                            AssetImage("assets/image/IMG_3981.PNG"),
-                      ),
-                      Text(
-                        "Aditya",
-                        style: GoogleFonts.dancingScript(
-                          //pacifico
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40.0,
+                        SizedBox(
+                          height: 30,
+                          child: Divider(
+                              color: Colors.teal.shade50, thickness: 1.0),
                         ),
-                      ),
-                      Text(
-                        "FLUTTER DEVELOPER",
-                        style: GoogleFonts.sourceSansPro(
-                          color: Colors.teal.shade400,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          letterSpacing: 2.5,
+                        CircleAvatar(
+                          radius: 60,
+                          backgroundImage:
+                              AssetImage("assets/image/IMG_3981.PNG"),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                        width: 150.0,
-                        child:
-                            Divider(color: Colors.teal.shade50, thickness: 1.5),
-                      ),
-                      Card(
-                        color: Colors.white,
-                        margin: EdgeInsets.symmetric(
-                            horizontal: deviceSize.width * 0.12,
-                            vertical: 10.0),
-                        child: ListTile(
-                          horizontalTitleGap: 0,
-                          leading: Icon(
-                            Icons.email_sharp,
-                            color: Colors.teal,
+                        Text(
+                          "Aditya",
+                          style: GoogleFonts.dancingScript(
+                            //pacifico
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40.0,
                           ),
-                          title: Text(
-                            "aditya.work2000@gmail.com",
-                            style: GoogleFonts.sourceSansPro(
-                              fontSize: 18,
+                        ),
+                        Text(
+                          "FLUTTER DEVELOPER",
+                          style: GoogleFonts.sourceSansPro(
+                            color: Colors.teal.shade400,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            letterSpacing: 2.5,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                          width: 150.0,
+                          child: Divider(
+                              color: Colors.teal.shade50, thickness: 1.5),
+                        ),
+                        Card(
+                          color: Colors.white,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: deviceSize.width * 0.12,
+                              vertical: 10.0),
+                          child: ListTile(
+                            horizontalTitleGap: 0,
+                            leading: Icon(
+                              Icons.email_sharp,
                               color: Colors.teal,
+                            ),
+                            title: Text(
+                              "aditya.work2000@gmail.com",
+                              style: GoogleFonts.sourceSansPro(
+                                fontSize: 18,
+                                color: Colors.teal,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-        ]));
+          ]),
+        ));
   }
 }

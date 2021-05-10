@@ -13,6 +13,7 @@ class MedicineScreen extends StatefulWidget {
 }
 
 class _MedicineScreenState extends State<MedicineScreen> {
+  GlobalKey<FormState> _key = GlobalKey<FormState>();
   String filterBy = '';
   bool isTru = false;
   @override
@@ -51,6 +52,7 @@ class _MedicineScreenState extends State<MedicineScreen> {
                     color: Colors.white,
                   ),
                   child: Form(
+                    key: _key,
                     child: Row(
                       children: [
                         Expanded(
@@ -71,10 +73,22 @@ class _MedicineScreenState extends State<MedicineScreen> {
                                 }
                               });
                             },
+                            onSaved: (value) {
+                              filterBy = value;
+                              setState(() {
+                                if (filterBy != '') {
+                                  isTru = true;
+                                } else {
+                                  isTru = false;
+                                }
+                              });
+                            },
                           ),
                         ),
                         TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              _key.currentState.save();
+                            },
                             icon: Icon(Icons.search),
                             label: Container())
                       ],
