@@ -15,6 +15,8 @@ class OxygenScreen extends StatefulWidget {
 }
 
 class _OxygenScreenState extends State<OxygenScreen> {
+  GlobalKey<FormState> _key = GlobalKey<FormState>();
+
   String filterBy = '';
   bool isTru = false;
 
@@ -54,6 +56,7 @@ class _OxygenScreenState extends State<OxygenScreen> {
                     color: Colors.white,
                   ),
                   child: Form(
+                    key: _key,
                     child: Row(
                       children: [
                         Expanded(
@@ -74,10 +77,22 @@ class _OxygenScreenState extends State<OxygenScreen> {
                                 }
                               });
                             },
+                            onSaved: (value) {
+                              filterBy = value;
+                              setState(() {
+                                if (filterBy != '') {
+                                  isTru = true;
+                                } else {
+                                  isTru = false;
+                                }
+                              });
+                            },
                           ),
                         ),
                         TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              _key.currentState.save();
+                            },
                             icon: Icon(Icons.search),
                             label: Container())
                       ],

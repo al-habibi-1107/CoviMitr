@@ -13,6 +13,7 @@ class TestingScreen extends StatefulWidget {
 }
 
 class _TestingScreenState extends State<TestingScreen> {
+  GlobalKey<FormState> _key = GlobalKey<FormState>();
   String filterBy = '';
   bool isTru = false;
 
@@ -52,6 +53,7 @@ class _TestingScreenState extends State<TestingScreen> {
                     color: Colors.white,
                   ),
                   child: Form(
+                    key: _key,
                     child: Row(
                       children: [
                         Expanded(
@@ -63,7 +65,8 @@ class _TestingScreenState extends State<TestingScreen> {
                             onChanged: (value) {
                               filterBy = value;
                             },
-                            onEditingComplete: () {
+                            onSaved: (value) {
+                              filterBy = value;
                               setState(() {
                                 if (filterBy != '') {
                                   isTru = true;
@@ -75,7 +78,9 @@ class _TestingScreenState extends State<TestingScreen> {
                           ),
                         ),
                         TextButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              _key.currentState.save();
+                            },
                             icon: Icon(Icons.search),
                             label: Container())
                       ],
