@@ -4,7 +4,6 @@ import 'package:covimitr/services/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart';
-import 'package:intl/intl.dart';
 
 class TestingScreen extends StatefulWidget {
   static const routeName = '/testing-screen';

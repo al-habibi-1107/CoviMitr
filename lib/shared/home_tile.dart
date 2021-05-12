@@ -1,42 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeTile extends StatelessWidget {
   final deviceSize;
   final onPressed;
   final text;
 
-  HomeTile({this.deviceSize, this.onPressed, this.text});
+  final Color tileCol;
+  final String imgAdr;
+
+  HomeTile(
+      {this.deviceSize, this.onPressed, this.text, this.tileCol, this.imgAdr});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: TextButton.styleFrom(padding: EdgeInsets.all(0.0)),
+      style: TextButton.styleFrom(
+        padding: EdgeInsets.all(0.0),
+        minimumSize: Size(0, deviceSize.height * 0.10),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
       onPressed: onPressed,
-      child: Center(
-        child: Container(
-          // height: deviceSize.height * 0.1,
-          // width: deviceSize.width * 0.6,
-          decoration: BoxDecoration(
+      child: Column(
+        children: [
+          Container(
+            height: deviceSize.height * 0.2,
+            decoration: BoxDecoration(
               border: Border.all(
-                color: Color.fromRGBO(185, 151, 80, 1),
-                width: 0.75,
+                color: Colors.white,
+                width: 2,
               ),
-              color: Color.fromRGBO(185, 151, 80, 0.3),
-              borderRadius: BorderRadius.circular(5)),
-          margin: EdgeInsets.all(18.0),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                text,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
+              color: tileCol,
+              borderRadius: BorderRadius.circular(5),
+              boxShadow: ([
+                BoxShadow(
+                    color: Colors.grey[350],
+                    blurRadius: 15,
+                    spreadRadius: 2,
+                    offset: Offset(4, 4)),
+              ]),
+            ),
+            margin: EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: deviceSize.height * 0.13,
+                  child: Image(
+                    image: AssetImage(imgAdr),
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      text,
+                      style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }
