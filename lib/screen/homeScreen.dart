@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final deviceSize = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth > 451) {
+        if (constraints.maxWidth > 551) {
           return Scaffold(
             backgroundColor: Color(0xfff6f7f9),
             appBar: AppBar(
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text(
                 'Covimitr',
                 style: GoogleFonts.calligraffitti(
-                  color: Colors.purple,
+                  color: Color.fromRGBO(96, 44, 211, 1),
                   fontWeight: FontWeight.bold,
                   fontSize: 32,
                   letterSpacing: 2,
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   icon: Icon(
                     Icons.info_outline,
-                    color: Colors.purple,
+                    color: Color.fromRGBO(96, 44, 211, 1),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamed(About.routeName);
@@ -156,7 +156,7 @@ class HomeMobileView extends StatelessWidget {
         title: Text(
           'Covimitr',
           style: GoogleFonts.calligraffitti(
-              color: Colors.purple,
+              color: Color.fromRGBO(96, 44, 211, 1),
               fontWeight: FontWeight.bold,
               fontSize: 32,
               letterSpacing: 2),
@@ -165,7 +165,7 @@ class HomeMobileView extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: Colors.purple,
+              color: Color.fromRGBO(96, 44, 211, 1),
             ),
             onPressed: () {
               Navigator.of(context).pushNamed(About.routeName);
@@ -201,7 +201,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Oxygen",
                     deviceSize: deviceSize,
-                    tileCol: Colors.purple.shade100,
+                    tileCol: Colors.white,
                     imgAdr: "assets/image/O2.png",
                   ),
                   HomeTile(
@@ -210,7 +210,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Medicine",
                     deviceSize: deviceSize,
-                    tileCol: Colors.blue.shade100,
+                    tileCol: Colors.white,
                     imgAdr: "assets/image/medicine.png",
                   ),
                   HomeTile(
@@ -219,7 +219,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Testing",
                     deviceSize: deviceSize,
-                    tileCol: Colors.green.shade100,
+                    tileCol: Colors.white,
                     imgAdr: "assets/image/testing.png",
                   ),
                   HomeTile(
@@ -228,7 +228,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Plasma",
                     deviceSize: deviceSize,
-                    tileCol: Colors.teal.shade100,
+                    tileCol: Colors.white,
                     imgAdr: "assets/image/plasma.png",
                   ),
                 ],

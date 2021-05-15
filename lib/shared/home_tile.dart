@@ -41,29 +41,33 @@ class HomeTile extends StatelessWidget {
               ]),
             ),
             margin: EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: deviceSize.height * 0.13,
-                  child: Image(
-                    image: AssetImage(imgAdr),
-                    fit: BoxFit.scaleDown,
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      text,
-                      style: GoogleFonts.montserrat(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
+            child: Card(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Container(
+                      height: deviceSize.height * 0.06,
+                      child: Image(
+                        image: AssetImage(imgAdr),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        text,
+                        style: GoogleFonts.montserrat(
+                            color: Color.fromRGBO(96, 44, 211, 1),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
