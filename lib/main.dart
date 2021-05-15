@@ -16,10 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: Color.fromRGBO(71, 20, 61, 1),
-      )),
       home: HomeScreen(),
       routes: {
         OxygenScreen.routeName: (context) => OxygenScreen(),

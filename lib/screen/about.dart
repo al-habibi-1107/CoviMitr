@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -10,14 +12,22 @@ class About extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.deepPurple),
           backgroundColor: Colors.transparent,
           elevation: 0.0,
-          title: Text("Team DevPro"),
+          title: Text(
+            "Team DevPro",
+            style: GoogleFonts.calligraffitti(
+                color: Colors.deepPurple,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                letterSpacing: 2),
+          ),
         ),
-        backgroundColor: Colors.teal.shade200,
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(children: [
-            deviceSize.width > 1200
+            deviceSize.width > 800
                 ? SafeArea(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +49,7 @@ class About extends StatelessWidget {
                               "Kamil Anwar",
                               style: GoogleFonts.dancingScript(
                                 //pacifico
-                                color: Colors.white,
+                                color: Colors.teal,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 40.0,
                               ),
@@ -47,9 +57,9 @@ class About extends StatelessWidget {
                             Text(
                               "FLUTTER DEVELOPER",
                               style: GoogleFonts.sourceSansPro(
-                                color: Colors.teal.shade400,
+                                color: Colors.teal.shade100,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
+                                fontSize: 16.0,
                                 letterSpacing: 2.5,
                               ),
                             ),
@@ -63,7 +73,7 @@ class About extends StatelessWidget {
                               height: 60,
                               width: deviceSize.width * 0.25,
                               child: Card(
-                                color: Colors.white,
+                                color: Colors.teal.shade100,
                                 // margin: EdgeInsets.symmetric(
                                 //     horizontal: deviceSize.width * 0.38,
                                 //     vertical: 10.0),
@@ -71,13 +81,13 @@ class About extends StatelessWidget {
                                   horizontalTitleGap: 0,
                                   leading: Icon(
                                     Icons.email_sharp,
-                                    color: Colors.teal,
+                                    color: Colors.white,
                                   ),
                                   title: Text(
                                     "kamilanwar2001@gmail.com",
                                     style: GoogleFonts.sourceSansPro(
                                       fontSize: 20,
-                                      color: Colors.teal,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),
@@ -90,7 +100,7 @@ class About extends StatelessWidget {
                             margin: EdgeInsets.symmetric(horizontal: 100),
                             width: 1,
                             height: 200,
-                            color: Colors.white,
+                            color: Colors.teal,
                           ),
                         ),
                         Column(
@@ -109,7 +119,7 @@ class About extends StatelessWidget {
                               "Aditya",
                               style: GoogleFonts.dancingScript(
                                 //pacifico
-                                color: Colors.white,
+                                color: Colors.teal,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 40.0,
                               ),
@@ -117,9 +127,9 @@ class About extends StatelessWidget {
                             Text(
                               "FLUTTER DEVELOPER",
                               style: GoogleFonts.sourceSansPro(
-                                color: Colors.teal.shade400,
+                                color: Colors.teal.shade100,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
+                                fontSize: 16.0,
                                 letterSpacing: 2.5,
                               ),
                             ),
@@ -133,7 +143,7 @@ class About extends StatelessWidget {
                               height: 60,
                               width: deviceSize.width * 0.25,
                               child: Card(
-                                color: Colors.white,
+                                color: Colors.teal.shade100,
                                 // margin: EdgeInsets.symmetric(
                                 //     horizontal: deviceSize.width * 0.38,
                                 //     vertical: 10.0),
@@ -141,13 +151,13 @@ class About extends StatelessWidget {
                                   horizontalTitleGap: 0,
                                   leading: Icon(
                                     Icons.email_sharp,
-                                    color: Colors.teal,
+                                    color: Colors.white,
                                   ),
                                   title: Text(
                                     "aditya.work2000@gmail.com",
                                     style: GoogleFonts.sourceSansPro(
                                       fontSize: 20,
-                                      color: Colors.teal,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),

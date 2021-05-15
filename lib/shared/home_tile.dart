@@ -17,7 +17,7 @@ class HomeTile extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         padding: EdgeInsets.all(0.0),
-        minimumSize: Size(0, deviceSize.height * 0.10),
+        minimumSize: Size(deviceSize.width * 0.2, deviceSize.height * 0.10),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: onPressed,
