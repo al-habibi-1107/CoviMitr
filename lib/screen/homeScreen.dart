@@ -20,120 +20,130 @@ class _HomeScreenState extends State<HomeScreen> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 551) {
-          return Scaffold(
-            backgroundColor: Color(0xfff6f7f9),
-            appBar: AppBar(
-              backgroundColor: Color(0xfff6f7f9),
-              elevation: 5,
-              title: Text(
-                'Covimitr',
-                style: GoogleFonts.calligraffitti(
-                  color: Color.fromRGBO(96, 44, 211, 1),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
-                  letterSpacing: 2,
-                ),
-              ),
-              actions: [
-                IconButton(
-                  icon: Icon(
-                    Icons.info_outline,
-                    color: Color.fromRGBO(96, 44, 211, 1),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(About.routeName);
-                  },
-                )
-              ],
-            ),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'Tap cards to view',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 18,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GridView(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: deviceSize.width * 0.3,
-                          childAspectRatio: 1.95,
-                          crossAxisSpacing: 0,
-                          mainAxisSpacing: 0),
-                      children: [
-                        HomeTile(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(OxygenScreen.routeName);
-                          },
-                          text: "Oxygen",
-                          deviceSize: deviceSize,
-                          tileCol: Colors.purple.shade100,
-                          imgAdr: "assets/image/O2.png",
-                        ),
-                        HomeTile(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(MedicineScreen.routeName);
-                          },
-                          text: "Medicine",
-                          deviceSize: deviceSize,
-                          tileCol: Colors.blue.shade100,
-                          imgAdr: "assets/image/medicine.png",
-                        ),
-                        HomeTile(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(TestingScreen.routeName);
-                          },
-                          text: "Testing",
-                          deviceSize: deviceSize,
-                          tileCol: Colors.green.shade100,
-                          imgAdr: "assets/image/testing.png",
-                        ),
-                        HomeTile(
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(PlasmaScreen.routeName);
-                          },
-                          text: "Plasma",
-                          deviceSize: deviceSize,
-                          tileCol: Colors.teal.shade100,
-                          imgAdr: "assets/image/plasma.png",
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    color: Colors.yellow.shade100,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: deviceSize.height * 0.01,
-                          horizontal: deviceSize.width * 0.04),
-                      child: Text(
-                        "DISCLAIMER: All of these resources provided on an “as and when basis” and “as in” based on a fact check done by volunteers who are dedicated to help individuals and families in such challenging times. By using these resources, you are agreeing that COVID FIGHTERS INDIA, however, do not accept any responsibility or liability for the accuracy, content, completeness, legality or reliability of the information contained in any of these.",
-                        style: GoogleFonts.aBeeZee(
-                          color: Colors.deepPurple,
-                        ),
-                        textAlign: TextAlign.justify,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+          return HomeUiDesktop(deviceSize: deviceSize);
         } else {
           return HomeMobileView(deviceSize: deviceSize);
         }
       },
+    );
+  }
+}
+
+class HomeUiDesktop extends StatelessWidget {
+  const HomeUiDesktop({
+    Key key,
+    @required this.deviceSize,
+  }) : super(key: key);
+
+  final Size deviceSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xfff6f7f9),
+      appBar: AppBar(
+        backgroundColor: Color(0xfff6f7f9),
+        elevation: 5,
+        title: Text(
+          'Covimitr',
+          style: GoogleFonts.calligraffitti(
+            color: Color.fromRGBO(96, 44, 211, 1),
+            fontWeight: FontWeight.bold,
+            fontSize: 32,
+            letterSpacing: 2,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.info_outline,
+              color: Color.fromRGBO(96, 44, 211, 1),
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed(About.routeName);
+            },
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Tap cards to view',
+                style: GoogleFonts.montserrat(
+                  fontSize: 18,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
+            Expanded(
+              child: GridView(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: deviceSize.width * 0.3,
+                    childAspectRatio: 1.95,
+                    crossAxisSpacing: 0,
+                    mainAxisSpacing: 0),
+                children: [
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(OxygenScreen.routeName);
+                    },
+                    text: "Oxygen",
+                    deviceSize: deviceSize,
+                    tileCol: Colors.purple.shade100,
+                    imgAdr: "assets/image/O2.png",
+                  ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(MedicineScreen.routeName);
+                    },
+                    text: "Medicine",
+                    deviceSize: deviceSize,
+                    tileCol: Colors.blue.shade100,
+                    imgAdr: "assets/image/medicine.png",
+                  ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(TestingScreen.routeName);
+                    },
+                    text: "Testing",
+                    deviceSize: deviceSize,
+                    tileCol: Colors.green.shade100,
+                    imgAdr: "assets/image/testing.png",
+                  ),
+                  HomeTile(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(PlasmaScreen.routeName);
+                    },
+                    text: "Plasma",
+                    deviceSize: deviceSize,
+                    tileCol: Colors.teal.shade100,
+                    imgAdr: "assets/image/plasma.png",
+                  ),
+                ],
+              ),
+            ),
+            Card(
+              color: Colors.yellow.shade100,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: deviceSize.height * 0.01,
+                    horizontal: deviceSize.width * 0.04),
+                child: Text(
+                  "DISCLAIMER: All of these resources provided on an “as and when basis” and “as in” based on a fact check done by volunteers who are dedicated to help individuals and families in such challenging times. By using these resources, you are agreeing that COVID FIGHTERS INDIA, however, do not accept any responsibility or liability for the accuracy, content, completeness, legality or reliability of the information contained in any of these.",
+                  style: GoogleFonts.aBeeZee(
+                    color: Colors.deepPurple,
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -201,7 +211,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Oxygen",
                     deviceSize: deviceSize,
-                    tileCol: Colors.white,
+                    tileCol: Colors.purple.shade100,
                     imgAdr: "assets/image/O2.png",
                   ),
                   HomeTile(
@@ -210,7 +220,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Medicine",
                     deviceSize: deviceSize,
-                    tileCol: Colors.white,
+                    tileCol: Colors.blue.shade100,
                     imgAdr: "assets/image/medicine.png",
                   ),
                   HomeTile(
@@ -219,7 +229,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Testing",
                     deviceSize: deviceSize,
-                    tileCol: Colors.white,
+                    tileCol: Colors.green.shade100,
                     imgAdr: "assets/image/testing.png",
                   ),
                   HomeTile(
@@ -228,7 +238,7 @@ class HomeMobileView extends StatelessWidget {
                     },
                     text: "Plasma",
                     deviceSize: deviceSize,
-                    tileCol: Colors.white,
+                    tileCol: Colors.teal.shade100,
                     imgAdr: "assets/image/plasma.png",
                   ),
                 ],
