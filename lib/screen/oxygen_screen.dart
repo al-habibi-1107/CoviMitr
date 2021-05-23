@@ -19,14 +19,17 @@ class _OxygenScreenState extends State<OxygenScreen> {
 
   String filterBy = '';
   bool isTru = false;
+  int totalLen = 0;
+  bool isEmpty = false;
 
   @override
   Widget build(BuildContext context) {
+    int count = 0;
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(71, 20, 61, 0.9),
+        backgroundColor: Colors.purple.shade100,
         title: Text("Oxygen Data"),
         elevation: 0.0,
       ),
@@ -110,7 +113,7 @@ class _OxygenScreenState extends State<OxygenScreen> {
                         ConnectionState.waiting) {
                       return Center(
                           child: SpinKitFoldingCube(
-                        color: Color.fromRGBO(71, 20, 61, 0.9),
+                        color: Colors.purple.shade100,
                         size: 30,
                       ));
                     } else {
@@ -118,65 +121,114 @@ class _OxygenScreenState extends State<OxygenScreen> {
                       List oxyData = jsonDecode(resOxy.body);
 
                       return deviceSize.width > 1200
-                          ? GridView.builder(
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2, childAspectRatio: 2),
-                              itemBuilder: (context, index) {
-                                var supData = oxyData[index];
-                                String updateDate = '';
+                          ? isEmpty
+                              ? Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        "assets/image/out-of-stock.png",
+                                        fit: BoxFit.contain,
+                                        height: deviceSize.width * 0.4,
+                                      ),
+                                      Text(
+                                          "Sorry No Resources found in the city!")
+                                    ],
+                                  ),
+                                )
+                              : GridView.builder(
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          childAspectRatio: 2),
+                                  itemBuilder: (context, index) {
+                                    var supData = oxyData[index];
+                                    String updateDate = '';
 
-                                if (supData['lastUpdate'].toString() != '') {
-                                  DateTime strtDate =
-                                      DateTime.parse(supData['lastUpdate']);
-                                  updateDate =
-                                      DateFormat.MMMEd().format(strtDate);
-                                }
-                                return HelpCard(
-                                  supData: supData,
-                                  updateDate: updateDate,
-                                  deviceSize: deviceSize,
-                                );
-                              },
-                              itemCount: oxyData.length,
-                            )
-                          : ListView.builder(
-                              itemBuilder: (context, index) {
-                                var supData = oxyData[index];
-                                String updateDate = '';
+                                    if (count + 1 == oxyData.length) {
+                                      isEmpty = true;
+                                    } else {
+                                      isEmpty = false;
+                                    }
 
-                                if (supData['lastUpdate'].toString() != '') {
-                                  DateTime strtDate =
-                                      DateTime.parse(supData['lastUpdate']);
-                                  updateDate =
-                                      DateFormat.MMMEd().format(strtDate);
-                                }
-
-                                if (filterBy != '') {
-                                  if (supData['city']
-                                      .toString()
-                                      .toLowerCase()
-                                      .contains(filterBy.toLowerCase())) {
+                                    if (supData['lastUpdate'].toString() !=
+                                        '') {
+                                      DateTime strtDate =
+                                          DateTime.parse(supData['lastUpdate']);
+                                      updateDate =
+                                          DateFormat.MMMEd().format(strtDate);
+                                    }
                                     return HelpCard(
-                                      id: index,
                                       supData: supData,
                                       updateDate: updateDate,
                                       deviceSize: deviceSize,
                                     );
-                                  } else {
-                                    return Container();
-                                  }
-                                } else {
-                                  return HelpCard(
-                                    id: index,
-                                    supData: supData,
-                                    updateDate: updateDate,
-                                    deviceSize: deviceSize,
-                                  );
-                                }
-                              },
-                              itemCount: oxyData.length,
-                            );
+                                  },
+                                  itemCount: oxyData.length,
+                                )
+                          : isEmpty
+                              ? Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        "assets/image/out-of-stock.png",
+                                        fit: BoxFit.contain,
+                                        height: deviceSize.width * 0.4,
+                                      ),
+                                      Text(
+                                          "Sorry No Resources found in the city!")
+                                    ],
+                                  ),
+                                )
+                              : ListView.builder(
+                                  itemBuilder: (context, index) {
+                                    var supData = oxyData[index];
+                                    String updateDate = '';
+
+                                    if (count + 1 == oxyData.length) {
+                                      isEmpty = true;
+                                    } else {
+                                      isEmpty = false;
+                                    }
+                                    if (supData['lastUpdate'].toString() !=
+                                        '') {
+                                      DateTime strtDate =
+                                          DateTime.parse(supData['lastUpdate']);
+                                      updateDate =
+                                          DateFormat.MMMEd().format(strtDate);
+                                    }
+
+                                    if (filterBy != '') {
+                                      if (supData['city']
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(filterBy.toLowerCase())) {
+                                        return HelpCard(
+                                          id: index,
+                                          supData: supData,
+                                          updateDate: updateDate,
+                                          deviceSize: deviceSize,
+                                        );
+                                      } else {
+                                        count++;
+                                        return Container();
+                                      }
+                                    } else {
+                                      return HelpCard(
+                                        id: index,
+                                        supData: supData,
+                                        updateDate: updateDate,
+                                        deviceSize: deviceSize,
+                                      );
+                                    }
+                                  },
+                                  itemCount: oxyData.length,
+                                );
                     }
                   }
                 }),
